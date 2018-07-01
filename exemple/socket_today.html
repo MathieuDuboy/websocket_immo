@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Socket.io</title>
+    </head>
+    <body>
+        <pre>
+        {
+          "ville" : (string),
+          "date" : (date format),
+          "datas" : [
+            {"indice" : (string)},
+            {"indice" : (string)},
+            ...
+            {"indice" : (string)}
+          ]
+        }</pre></p>
+        <p>Exemple tronqué de Données reçues (Premiere ... Dernière): <span id="today-list-datas"></span></p>
+        <script src="socket.io.js"></script>
+        <script>
+            var MyDate = new Date();
+            var MyDateString;
+            MyDate.setDate(MyDate.getDate());
+            MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'+ MyDate.getFullYear();
+            console.log(MyDateString);
+            var socket2 = io('wss://salty-bastion-25542.herokuapp.com', {
+              query: {
+                token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE1MzAyNjM3MDd9.jGuM_vciKXZehZtIs6wXCbmaDjOylnX6BvZyYsTGzT0",
+                ville : "Tokyo",
+                date :  MyDateString,
+                route : "today"
+              }
+            });
+            socket2.on('today', function (data) {
+              console.log(data);
+              var span_datas = document.getElementById("today-list-datas");
+              //console.log("taille recue : "+Object.keys(data).length);
+              var firstItem = data.datas[0];
+              var lastItem = data.datas[data.datas.length-1];
+              span_datas.innerHTML = JSON.stringify(firstItem)+' ... '+JSON.stringify(lastItem);
+              //  span.innerHTML = data.indice_actuel;
+            });
+        </script>
+    </body>
+</html>

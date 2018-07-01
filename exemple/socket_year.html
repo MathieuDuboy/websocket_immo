@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Socket.io</title>
+    </head>
+    <body>
+      <pre>
+      {
+        "ville" : (string),
+        "datas" : [
+          {"indice_ouverture" : (string), "indice_fermeture" : (string)},
+          {"indice_ouverture" : (string), "indice_fermeture" : (string)},
+          ...
+          {"indice_ouverture" : (string), "indice_fermeture" : (string)}
+        ]
+      }</pre>
+
+        <script src="socket.io.js"></script>
+        <script>
+            var url_socket = 'wss://salty-bastion-25542.herokuapp.com';
+            var secret_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE1MzAyNjM3MDd9.jGuM_vciKXZehZtIs6wXCbmaDjOylnX6BvZyYsTGzT0";
+            var socket = io(url_socket, {
+              query: {
+                token: secret_token,
+                ville : "Paris",
+                route : "year"
+              }
+            });
+            socket.on('year', function (data) {
+                console.log(data);
+            });
+        </script>
+    </body>
+</html>

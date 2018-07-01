@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Socket.io</title>
+    </head>
+    <body>
+        <h4>Récupération /now des datas en temps réel via le Socket</h4>
+        <p>Indice actuel : <span id="now-list"></span></p>
+        <p>Données reçues : <span id="now-list-datas"></span></p>
+        <p>Format de données retour : <br />
+        <pre>
+        {
+          "indice_actuel" : (int),
+          "ville" : (string),
+          "date" : (string)
+        }
+        </pre>
+        </p>
+        <p>Google Chrome : <br />Press either CTRL + SHIFT + J to open the “console” tab of the Developer Tools.</p>
+        <p>Safari : <br />Press CTRL + ALT + I to open the Web Inspector.</p>
+        <p>IE : <br />Press F12 to open the developer tools.</p>
+        <p>Firefox : <br />Press CTRL + SHIFT + K to open the Web console (COMMAND + SHIFT + K on Macs).</p>
+        <p>Opera : <br/>Press CTRL + SHIFT + I to open Dragonfly.</p>
+        <script src="socket.io.js"></script>
+        <script>
+            var MyDate = new Date();
+            var MyDateString;
+            MyDate.setDate(MyDate.getDate());
+            MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'+ MyDate.getFullYear();
+            var socket = io('wss://salty-bastion-25542.herokuapp.com', {
+              query: {
+                token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE1MzAyNjM3MDd9.jGuM_vciKXZehZtIs6wXCbmaDjOylnX6BvZyYsTGzT0",
+                ville : "Paris",
+                date : MyDateString,
+                route : "now"
+              }
+            });
+            socket.on('now', function (data) {
+                console.log(data);
+                var span = document.getElementById("now-list");
+                var span_datas = document.getElementById("now-list-datas");
+                span_datas.innerHTML = JSON.stringify(data);
+                span.innerHTML = data.indice_actuel;
+            });
+        </script>
+    </body>
+</html>

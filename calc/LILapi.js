@@ -56,7 +56,7 @@ class LILapi
         MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'+ MyDate.getFullYear();
 
         var values = [];
-        for (var i = 0; i < this.DATES.length ; i++) {
+        for (var i = 0; i < this.DATES.length-1 ; i++) {
           values.push({
               "date" : this.DATES[i],
               "indice_ouverture" : this.OPEN[i][icity],

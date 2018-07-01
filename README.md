@@ -34,5 +34,8 @@ socket.on('now', function(data) {
    console.log(data);
 });
 `````
-**Full exemple here** : <br />
+**Full exemple here /now** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_instant.html<br />
+**Full exemple here /day** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_day.html<br />
+**Full exemple here /today** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_today.html<br />
+**Full exemple here /year** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_year.html<br /><br />
 **Demo here** : https://mon-chatbot.com/WebSocket/socket_instant.html

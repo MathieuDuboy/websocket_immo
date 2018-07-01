@@ -14,12 +14,12 @@ A Websocket developed in Node.js hosted on a Heroku server to make a link betwee
 - Launch server.js
 
 ## Usage: 
-### - Authentication : 
+### Authentication : 
 Use `````jsonwebtoken````` module to secure webscoket. Documentation here : 
 https://github.com/auth0/node-jsonwebtoken 
 **Eemple** : `````token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE1MzAyNjM3MDd9.jGuM_vciKXZehZtIs6wXCbmaDjOylnX6BvZyYsTGzT0`````
 
-### - Init the WebSocket (Client)
+### Init the WebSocket (Client)
 To get the instant value : 
 `````
 var socket = io('wss://salty-bastion-25542.herokuapp.com', {

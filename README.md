@@ -34,6 +34,69 @@ socket.on('now', function(data) {
    console.log(data);
 });
 `````
+
+## /now : 
+### JSON return values : 
+`````
+{
+   "indice_actuel": (int),
+   "ville": (string),
+   "date": (string)
+}
+`````
+
+## /today : 
+### JSON return values : 
+`````
+{
+   "ville": (string),
+   "date": (date format),
+   "datas": [{
+      "indice": (string)
+   }, {
+      "indice": (string)
+   }, ...{
+      "indice": (string)
+   }]
+}
+`````
+  
+## /day : 
+### JSON return values : 
+`````
+{
+   "ville": (string),
+   "date": (date format),
+   "indice_ouverture": (int),
+   "indice_fermeture": (int),
+   "datas": [{
+      "indice": (string)
+   }, {
+      "indice": (string)
+   }, ...{
+      "indice": (string)
+   }]
+}
+`````
+        
+## /year : 
+### JSON return values : 
+`````
+{
+   "ville": (string),
+   "datas": [{
+      "indice_ouverture": (string),
+      "indice_fermeture": (string)
+   }, {
+      "indice_ouverture": (string),
+      "indice_fermeture": (string)
+   }, ...{
+      "indice_ouverture": (string),
+      "indice_fermeture": (string)
+   }]
+}
+`````
+
 **Full exemple here /now** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_instant.html<br />
 **Full exemple here /day** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_day.html<br />
 **Full exemple here /today** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_today.html<br />

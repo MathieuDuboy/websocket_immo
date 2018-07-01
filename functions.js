@@ -61,10 +61,23 @@ module.exports = {
             "indice": valeur
          });
       }
+      var MyDate = new Date();
+      var MyDateString;
+      MyDate.setDate(MyDate.getDate());
+      MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'+ MyDate.getFullYear();
+
+      if(date > MyDateString) {
+        var datas_return = {
+           "ville": ville,
+           "date": date,
+           "datas": []
+        };
+      }
       return datas_return;
    },
    generate_datas_year: function(ville) {
       var indices_open_close = TT.GetOpenPricesTop(ville);
+      console.log(indices_open_close);
       var datas_return = {
          "ville": ville,
          "datas": indices_open_close

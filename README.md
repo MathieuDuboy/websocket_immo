@@ -11,6 +11,7 @@ A Websocket developed in Node.js hosted on a Heroku server to make a link betwee
 ## Installation:
 - Deploy the files on your server.
 - Using **npm** : Type the `````npm install````` command to install all the modules in package.json
+- Launch server.js
 
 ## Usage: 
 ### - Authentication : 
@@ -20,7 +21,7 @@ https://github.com/auth0/node-jsonwebtoken
 
 ### - Init the WebSocket (Client)
 To get the instant value : 
-``````
+`````
 var socket = io('wss://salty-bastion-25542.herokuapp.com', {
    query: {
       token: 		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE1MzAyNjM3MDd9.jGuM_vciKXZehZtIs6wXCbmaDjOylnX6BvZyYsTGzT0",
@@ -33,5 +34,5 @@ socket.on('now', function(data) {
    console.log(data);
 });
 `````
-Full exemple here : <br />
-Demo here : https://mon-chatbot.com/WebSocket/socket_instant.html
+**Full exemple here** : <br />
+**Demo here** : https://mon-chatbot.com/WebSocket/socket_instant.html

@@ -50,13 +50,21 @@ class LILapi
         var icity = this.CITIES.indexOf(city);
         if (icity == -1) return "CITY NOT FOUND";
 
+        var MyDate = new Date();
+        var MyDateString;
+        MyDate.setDate(MyDate.getDate());
+        MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'+ MyDate.getFullYear();
+
         var values = [];
-        for (var i = 0; i < this.DATES.length ; i++)
-            values.push({
-                "date" : this.DATES[i],
-                "indice_ouverture" : this.OPEN[i][icity],
-                "indice_fermeture" : this.CLOSE[i][icity]
-            });
+        for (var i = 0; i < this.DATES.length ; i++) {
+          values.push({
+              "date" : this.DATES[i],
+              "indice_ouverture" : this.OPEN[i][icity],
+              "indice_fermeture" : this.CLOSE[i][icity]
+          });
+          if (this.DATES[i] == MyDateString) { break; }
+        }
+
         return values;
     }
 

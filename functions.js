@@ -66,7 +66,7 @@ module.exports = {
       MyDate.setDate(MyDate.getDate());
       MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'+ MyDate.getFullYear();
 
-      if(date > MyDateString) {
+      if( date >= MyDateString) {
         var datas_return = {
            "ville": ville,
            "date": date,

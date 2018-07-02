@@ -65,8 +65,9 @@ module.exports = {
       var MyDateString;
       MyDate.setDate(MyDate.getDate());
       MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'+ MyDate.getFullYear();
-
-      if( date >= MyDateString) {
+      var date_FR = date.split("/");
+      var date_EN = date_FR[2]+'/'+date_FR[1]+'/'+date_FR[0];
+      if(new Date(date_EN).getTime() >= new Date().getTime() || date == MyDateString) {
         var datas_return = {
            "ville": ville,
            "date": date,

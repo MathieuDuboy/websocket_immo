@@ -57,12 +57,12 @@ class LILapi
 
         var values = [];
         for (var i = 0; i < this.DATES.length-1 ; i++) {
+          if (this.DATES[i] == MyDateString) { break; }
           values.push({
               "date" : this.DATES[i],
               "indice_ouverture" : this.OPEN[i][icity],
               "indice_fermeture" : this.CLOSE[i][icity]
           });
-          if (this.DATES[i] == MyDateString) { break; }
         }
 
         return values;

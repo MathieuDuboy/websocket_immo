@@ -76,6 +76,40 @@ module.exports = {
       }
       return datas_return;
    },
+   generate_last24: function(date, ville) {
+     var date_FR = date.split("/");
+     var date_EN = date_FR[2]+'/'+date_FR[1]+'/'+date_FR[0];
+     var d = new Date(date_EN);
+     var currentDate = new Date(d.setDate(d.getDate()-1));
+     var twoDigitMonth=((currentDate.getMonth()+1)>=10)? (currentDate.getMonth()+1) : '0' + (currentDate.getMonth()+1);
+     var twoDigitDate=((currentDate.getDate())>=10)? (currentDate.getDate()) : '0' + (currentDate.getDate());
+     var createdDateTo = twoDigitDate + "/" + twoDigitMonth + "/" + currentDate.getFullYear();
+     var ville = ville;
+     var totalsecondes = module.exports.getMsSinceMidnight();
+     var getSecondsToMidnight = 86400 - totalsecondes;
+     var debut = 86400 - getSecondsToMidnight;
+     var pipo = getSecondsToMidnight+totalsecondes;
+     var datas_return = {
+        "ville": ville,
+        "datas": []
+     };
+     var a = 0;
+     for (var i = parseInt(debut); i < 86400; i++) {
+        var valeur = TT.Ask(ville, createdDateTo, i);
+        datas_return.datas.push({
+           "indice": valeur
+        });
+        a++;
+     }
+     for (var i = 0; i < totalsecondes; i++) {
+        var valeur = TT.Ask(ville, date, i);
+        datas_return.datas.push({
+           "indice": valeur
+        });
+        a++;
+     }
+     return datas_return;
+   },
    generate_datas_year: function(ville) {
       var indices_open_close = TT.GetOpenPricesTop(ville);
       console.log(indices_open_close);

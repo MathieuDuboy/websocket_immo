@@ -6,6 +6,7 @@ A Websocket developed in Node.js hosted on a Heroku server to make a link betwee
 - / now: to retrieve the instantaneous values of the current index of a city every second.
 - / day: to retrieve the instantaneous values of the current index of a city every second + all values of the day since 00: 00: 01 + 00: 00
 - / today: to retrieve all the values of the day since 00: 00: 01 + 00: 00
+- / last24 : to retrieve the last 24h values
 - / year: to retrieve the opening + closing index of all the last days elapsed.
 
 ## Installation:
@@ -78,6 +79,21 @@ socket.on('now', function(data) {
    }]
 }
 `````
+
+## /last24 : 
+### JSON return values : 
+`````
+{
+   "ville": (string),
+   "datas": [{
+      "indice": (string)
+   }, {
+      "indice": (string)
+   }, ...{
+      "indice": (string)
+   }]
+}
+`````
         
 ## /year : 
 ### JSON return values : 
@@ -100,5 +116,6 @@ socket.on('now', function(data) {
 **Full exemple here /now** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_instant.html<br />
 **Full exemple here /day** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_day.html<br />
 **Full exemple here /today** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_today.html<br />
+**Full exemple here /last24** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_last24.html<br />
 **Full exemple here /year** : https://github.com/MathieuDuboy/websocket_immo/blob/master/exemple/socket_year.html<br /><br />
 **Demo here** : https://mon-chatbot.com/WebSocket/socket_instant.html

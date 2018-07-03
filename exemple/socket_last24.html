@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Socket.io</title>
+    </head>
+    <body>
+        <pre>
+        {
+          "ville" : (string),
+          "datas" : [
+            {"indice" : (string)},
+            {"indice" : (string)},
+            ...
+            {"indice" : (string)}
+          ]
+        }</pre>
+        <script src="socket.io.js"></script>
+        <script>
+            var MyDate = new Date();
+            var MyDateString;
+            MyDate.setDate(MyDate.getDate());
+            MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'+ MyDate.getFullYear();
+            var socket3 = io('wss://salty-bastion-25542.herokuapp.com', {
+              query: {
+                token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE1MzAyNjM3MDd9.jGuM_vciKXZehZtIs6wXCbmaDjOylnX6BvZyYsTGzT0",
+                ville : "Tokyo",
+                date :  MyDateString,
+                route : "last24"
+              }
+            });
+            socket3.on('last24', function (data) {
+              console.log(data);
+            });
+        </script>
+    </body>
+</html>

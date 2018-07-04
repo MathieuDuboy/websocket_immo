@@ -18,11 +18,15 @@ module.exports = {
       var unixtime = Date.parse(date_EN)/1000;
       return unixtime+secondes_depuis_minuit;
    },
-   generate_datas_instant: function(date, ville) {
-      var date = date;
+   generate_datas_instant: function(ville) {
+
+      var MyDate = new Date();
+      var MyDateString;
+      MyDate.setDate(MyDate.getDate());
+      MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'+ MyDate.getFullYear();
+      var date = MyDateString;
       var date_FR = date.split("/");
       var date_EN = date_FR[2]+'/'+date_FR[1]+'/'+date_FR[0];
-
       var ville = ville;
       var i = module.exports.getMsSinceMidnight();
       console.log("secondes depuis minuit : " + i);
@@ -35,8 +39,14 @@ module.exports = {
       };
       return datas_return;
    },
-   generate_datas_today: function(date, ville) {
-      var date = date;
+   generate_datas_today: function(ville) {
+
+     var MyDate = new Date();
+     var MyDateString;
+     MyDate.setDate(MyDate.getDate());
+     MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'+ MyDate.getFullYear();
+
+      var date = MyDateString;
       var ville = ville;
       var totalsecondes = module.exports.getMsSinceMidnight();
       var date_FR = date.split("/");
@@ -91,7 +101,13 @@ module.exports = {
       }
       return datas_return;
    },
-   generate_last24: function(date, ville) {
+   generate_last24: function(ville) {
+     var MyDate = new Date();
+     var MyDateString;
+     MyDate.setDate(MyDate.getDate());
+     MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'+ MyDate.getFullYear();
+     var date = MyDateString;
+
      var date_FR = date.split("/");
      var date_EN = date_FR[2]+'/'+date_FR[1]+'/'+date_FR[0];
      var d = new Date(date_EN);

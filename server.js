@@ -27,16 +27,16 @@ io.use(function(socket, next) {
    console.log("Connected succesfully to the socket ..." + JSON.stringify(socket.handshake.query));
    if (socket.handshake.query.route == 'now') {
       setInterval(() => {
-         socket.emit('now', functions.generate_datas_instant(socket.handshake.query.date, socket.handshake.query.ville));
+         socket.emit('now', functions.generate_datas_instant(socket.handshake.query.ville));
       }, 1000);
    } else if (socket.handshake.query.route == 'today') {
       setInterval(() => {
-         socket.emit('today', functions.generate_datas_today(socket.handshake.query.date, socket.handshake.query.ville));
+         socket.emit('today', functions.generate_datas_today(socket.handshake.query.ville));
       }, 1000);
    } else if (socket.handshake.query.route == 'day') {
       socket.emit('day', functions.generate_datas_day(socket.handshake.query.date, socket.handshake.query.ville));
    } else if (socket.handshake.query.route == 'last24') {
-      socket.emit('last24', functions.generate_last24(socket.handshake.query.date, socket.handshake.query.ville));
+      socket.emit('last24', functions.generate_last24(socket.handshake.query.ville));
    } else if (socket.handshake.query.route == 'year') {
       socket.emit('year', functions.generate_datas_year(socket.handshake.query.ville));
    }

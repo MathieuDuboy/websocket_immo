@@ -20,6 +20,9 @@ module.exports = {
    },
    generate_datas_instant: function(date, ville) {
       var date = date;
+      var date_FR = date.split("/");
+      var date_EN = date_FR[2]+'/'+date_FR[1]+'/'+date_FR[0];
+
       var ville = ville;
       var i = module.exports.getMsSinceMidnight();
       console.log("secondes depuis minuit : " + i);
@@ -28,7 +31,7 @@ module.exports = {
          "indice_actuel": indice_actuel,
          "ville": ville,
          "date": date,
-         "timestamp" : Date.now()
+         "timestamp" : module.exports.getTimestamp(date_EN, i)
       };
       return datas_return;
    },

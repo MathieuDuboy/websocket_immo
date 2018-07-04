@@ -15,7 +15,7 @@
     Load()
     {
         var fs = require("fs");
-        var data = fs.readFileSync('calc/data.csv', "utf8");
+        var data = fs.readFileSync('calc/data2.csv', "utf8");
         data = data.replace(/\r/g, '');
         data = data.split("\n");
 

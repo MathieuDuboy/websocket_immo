@@ -39,10 +39,9 @@ socket.on('now', function(data) {
 ### JSON return values : 
 `````
 {
-   "indice_actuel": (int),
-   "timestamp" : (int),
+   "v": (int),
+   "t" : (int),
    "ville": (string),
-   "date": (string)
 }
 `````
 
@@ -51,16 +50,15 @@ socket.on('now', function(data) {
 `````
 {
    "ville": (string),
-   "date": (date format),
-   "datas": [{
-      "indice": (int),
-      "timestamp" : (int)
+   "data": [{
+      "v": (int),
+      "t" : (int)
    }, {
-      "indice": (int),
-      "timestamp" : (int)
+      "v": (int),
+      "t" : (int)
    }, ...{
-      "indice": (int),
-      "timestamp" : (int)
+      "v": (int),
+      "t" : (int)
    }]
 }
 `````
@@ -70,18 +68,17 @@ socket.on('now', function(data) {
 `````
 {
    "ville": (string),
-   "date": (date format),
-   "indice_ouverture": (int),
-   "indice_fermeture": (int),
-   "datas": [{
-      "indice": (int),
-      "timestamp" : (int)
+   "o": (int),
+   "c": (int),
+   "data": [{
+      "v": (int),
+      "t" : (int)
    }, {
-      "indice": (int),
-      "timestamp" : (int)
+      "v": (int),
+      "t" : (int)
    }, ...{
-      "indice": (int),
-      "timestamp" : (int)
+      "v": (int),
+      "t" : (int)
    }]
 }
 `````
@@ -91,15 +88,15 @@ socket.on('now', function(data) {
 `````
 {
    "ville": (string),
-   "datas": [{
-      "indice": (int),
-      "timestamp" : (int)
+   "data": [{
+      "v": (int),
+      "t" : (int)
    }, {
-      "indice": (int),
-      "timestamp" : (int)
+      "v": (int),
+      "t" : (int)
    }, ...{
-      "indice": (int),
-      "timestamp" : (int)
+      "v": (int),
+      "t" : (int)
    }]
 }
 `````
@@ -109,18 +106,18 @@ socket.on('now', function(data) {
 `````
 {
    "ville": (string),
-   "datas": [{
-      "indice_ouverture": (int),
-      "indice_fermeture": (int),
-      "timestamp" : (int)
+   "data": [{
+      "o": (int),
+      "v": (int),
+      "t" : (int)
    }, {
-      "indice_ouverture": (int),
-      "indice_fermeture": (int),
-      "timestamp" : (int)
+      "o": (int),
+      "v": (int),
+      "t" : (int)
    }, ...{
-      "indice_ouverture": (int),
-      "indice_fermeture": (int),
-      "timestamp" : (int)
+      "o": (int),
+      "v": (int),
+      "t" : (int)
    }]
 }
 `````

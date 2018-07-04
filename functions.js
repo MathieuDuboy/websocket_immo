@@ -32,10 +32,9 @@ module.exports = {
       console.log("secondes depuis minuit : " + i);
       var indice_actuel = TT.Ask(ville, date, i);
       var datas_return = {
-         "indice_actuel": indice_actuel,
+         "v": indice_actuel,
          "ville": ville,
-         "date": date,
-         "timestamp" : module.exports.getTimestamp(date_EN, i)
+         "t" : module.exports.getTimestamp(date_EN, i)
       };
       return datas_return;
    },
@@ -54,14 +53,13 @@ module.exports = {
 
       var datas_return = {
          "ville": ville,
-         "date": date,
-         "datas": []
+         "data": []
       };
       for (var i = 0; i < totalsecondes; i++) {
          var valeur = TT.Ask(ville, date, i);
-         datas_return.datas.push({
-            "indice": valeur,
-            "timestamp" : module.exports.getTimestamp(date_EN, i)
+         datas_return.data.push({
+            "v": valeur,
+            "t" : module.exports.getTimestamp(date_EN, i)
          });
       }
       return datas_return;
@@ -74,16 +72,15 @@ module.exports = {
       var indices_open_close = TT.GetOpenPricesDate(ville, date);
       var datas_return = {
          "ville": ville,
-         "date": date,
-         "indice_ouverture": indices_open_close[1],
-         "indice_fermeture": indices_open_close[2],
-         "datas": []
+         "o": indices_open_close[1],
+         "c": indices_open_close[2],
+         "data": []
       };
       for (var i = 0; i < 86400; i++) {
          var valeur = TT.Ask(ville, date, i);
-         datas_return.datas.push({
-            "indice": valeur,
-            "timestamp" : module.exports.getTimestamp(date_EN, i)
+         datas_return.data.push({
+            "v": valeur,
+            "t" : module.exports.getTimestamp(date_EN, i)
          });
       }
       var MyDate = new Date();
@@ -95,8 +92,7 @@ module.exports = {
       if(new Date(date_EN).getTime() >= new Date().getTime() || date == MyDateString) {
         var datas_return = {
            "ville": ville,
-           "date": date,
-           "datas": []
+           "data": []
         };
       }
       return datas_return;
@@ -123,22 +119,22 @@ module.exports = {
      var pipo = getSecondsToMidnight+totalsecondes;
      var datas_return = {
         "ville": ville,
-        "datas": []
+        "data": []
      };
      var a = 0;
      for (var i = parseInt(debut); i < 86400; i++) {
         var valeur = TT.Ask(ville, createdDateTo, i);
-        datas_return.datas.push({
-           "indice": valeur,
-           "timestamp" : module.exports.getTimestamp(date1_EN, i)
+        datas_return.data.push({
+           "v": valeur,
+           "t" : module.exports.getTimestamp(date1_EN, i)
         });
         a++;
      }
      for (var i = 0; i < totalsecondes; i++) {
         var valeur = TT.Ask(ville, date, i);
-        datas_return.datas.push({
-           "indice": valeur,
-           "timestamp" : module.exports.getTimestamp(date_EN, i)
+        datas_return.data.push({
+           "v": valeur,
+           "t" : module.exports.getTimestamp(date_EN, i)
         });
         a++;
      }
@@ -149,7 +145,7 @@ module.exports = {
       console.log(indices_open_close);
       var datas_return = {
          "ville": ville,
-         "datas": indices_open_close,
+         "data": indices_open_close,
       };
       return datas_return;
    }

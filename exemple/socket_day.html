@@ -8,14 +8,13 @@
         <pre>
         {
           "ville" : (string),
-          "date" : (date format),
-          "indice_ouverture" : (int),
-          "indice_fermeture" : (int),
-          "datas" : [
-            {"indice" : (string)},
-            {"indice" : (string)},
+          "o" : (int),
+          "c" : (int),
+          "data" : [
+            {"v" : (int), "t" : (int)},
+            {"v" : (int), "t" : (int)},
             ...
-            {"indice" : (string)}
+            {"v" : (int), "t" : (int)}
           ]
         }</pre>
         <script src="socket.io.js"></script>

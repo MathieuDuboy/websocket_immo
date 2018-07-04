@@ -8,18 +8,17 @@
         <pre>
         {
           "ville" : (string),
-          "date" : (date format),
-          "datas" : [
-            {"indice" : (string)},
-            {"indice" : (string)},
+          "data" : [
+            {"v" : (string), "t" : (int)},
+            {"v" : (string), "t" : (int)},
             ...
-            {"indice" : (string)}
+            {"v" : (string), "t" : (int)}
           ]
         }</pre></p>
         <p>Exemple tronqué de Données reçues (Premiere ... Dernière): <span id="today-list-datas"></span></p>
         <script src="socket.io.js"></script>
         <script>
-          
+
             var socket2 = io('wss://salty-bastion-25542.herokuapp.com', {
               query: {
                 token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE1MzAyNjM3MDd9.jGuM_vciKXZehZtIs6wXCbmaDjOylnX6BvZyYsTGzT0",
@@ -31,8 +30,8 @@
               console.log(data);
               var span_datas = document.getElementById("today-list-datas");
               //console.log("taille recue : "+Object.keys(data).length);
-              var firstItem = data.datas[0];
-              var lastItem = data.datas[data.datas.length-1];
+              var firstItem = data.data[0];
+              var lastItem = data.data[data.data.length-1];
               span_datas.innerHTML = JSON.stringify(firstItem)+' ... '+JSON.stringify(lastItem);
               //  span.innerHTML = data.indice_actuel;
             });

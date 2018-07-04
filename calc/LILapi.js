@@ -62,10 +62,9 @@ class LILapi
           var date_FR = date.split("/");
           var date_EN = date_FR[2]+'/'+date_FR[1]+'/'+date_FR[0];
           values.push({
-              "date" : this.DATES[i],
-              "indice_ouverture" : this.OPEN[i][icity],
-              "indice_fermeture" : this.CLOSE[i][icity],
-              "timestamp" : Date.parse(date_EN)/1000
+              "o" : this.OPEN[i][icity],
+              "c" : this.CLOSE[i][icity],
+              "t" : Date.parse(date_EN)/1000
           });
         }
 

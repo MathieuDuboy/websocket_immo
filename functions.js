@@ -14,6 +14,10 @@ module.exports = {
       var secSinceMidnight = hours + minutes + seconds;
       return secSinceMidnight;
    },
+   getTimestamp: function(date_EN, secondes_depuis_minuit) {
+      var unixtime = Date.parse(date_EN)/1000;
+      return unixtime+secondes_depuis_minuit;
+   },
    generate_datas_instant: function(date, ville) {
       var date = date;
       var ville = ville;
@@ -23,7 +27,8 @@ module.exports = {
       var datas_return = {
          "indice_actuel": indice_actuel,
          "ville": ville,
-         "date": date
+         "date": date,
+         "timestamp" : Date.now()
       };
       return datas_return;
    },
@@ -31,6 +36,9 @@ module.exports = {
       var date = date;
       var ville = ville;
       var totalsecondes = module.exports.getMsSinceMidnight();
+      var date_FR = date.split("/");
+      var date_EN = date_FR[2]+'/'+date_FR[1]+'/'+date_FR[0];
+
       var datas_return = {
          "ville": ville,
          "date": date,
@@ -39,13 +47,16 @@ module.exports = {
       for (var i = 0; i < totalsecondes; i++) {
          var valeur = TT.Ask(ville, date, i);
          datas_return.datas.push({
-            "indice": valeur
+            "indice": valeur,
+            "timestamp" : module.exports.getTimestamp(date_EN, i)
          });
       }
       return datas_return;
    },
    generate_datas_day: function(date, ville) {
       var date = date;
+      var date_FR = date.split("/");
+      var date_EN = date_FR[2]+'/'+date_FR[1]+'/'+date_FR[0];
       var ville = ville;
       var indices_open_close = TT.GetOpenPricesDate(ville, date);
       var datas_return = {
@@ -58,7 +69,8 @@ module.exports = {
       for (var i = 0; i < 86400; i++) {
          var valeur = TT.Ask(ville, date, i);
          datas_return.datas.push({
-            "indice": valeur
+            "indice": valeur,
+            "timestamp" : module.exports.getTimestamp(date_EN, i)
          });
       }
       var MyDate = new Date();
@@ -84,6 +96,7 @@ module.exports = {
      var twoDigitMonth=((currentDate.getMonth()+1)>=10)? (currentDate.getMonth()+1) : '0' + (currentDate.getMonth()+1);
      var twoDigitDate=((currentDate.getDate())>=10)? (currentDate.getDate()) : '0' + (currentDate.getDate());
      var createdDateTo = twoDigitDate + "/" + twoDigitMonth + "/" + currentDate.getFullYear();
+     var date1_EN = currentDate.getFullYear() + "/" + twoDigitMonth + "/" + twoDigitDate;
      var ville = ville;
      var totalsecondes = module.exports.getMsSinceMidnight();
      var getSecondsToMidnight = 86400 - totalsecondes;
@@ -97,14 +110,16 @@ module.exports = {
      for (var i = parseInt(debut); i < 86400; i++) {
         var valeur = TT.Ask(ville, createdDateTo, i);
         datas_return.datas.push({
-           "indice": valeur
+           "indice": valeur,
+           "timestamp" : module.exports.getTimestamp(date1_EN, i)
         });
         a++;
      }
      for (var i = 0; i < totalsecondes; i++) {
         var valeur = TT.Ask(ville, date, i);
         datas_return.datas.push({
-           "indice": valeur
+           "indice": valeur,
+           "timestamp" : module.exports.getTimestamp(date_EN, i)
         });
         a++;
      }
@@ -115,7 +130,7 @@ module.exports = {
       console.log(indices_open_close);
       var datas_return = {
          "ville": ville,
-         "datas": indices_open_close
+         "datas": indices_open_close,
       };
       return datas_return;
    }

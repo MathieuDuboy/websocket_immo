@@ -58,10 +58,14 @@ class LILapi
         var values = [];
         for (var i = 0; i < this.DATES.length-1 ; i++) {
           if (this.DATES[i] == MyDateString) { break; }
+          var date = this.DATES[i];
+          var date_FR = date.split("/");
+          var date_EN = date_FR[2]+'/'+date_FR[1]+'/'+date_FR[0];
           values.push({
               "date" : this.DATES[i],
               "indice_ouverture" : this.OPEN[i][icity],
-              "indice_fermeture" : this.CLOSE[i][icity]
+              "indice_fermeture" : this.CLOSE[i][icity],
+              "timestamp" : Date.parse(date_EN)/1000
           });
         }
 

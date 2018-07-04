@@ -41,6 +41,7 @@ socket.on('now', function(data) {
 `````
 {
    "indice_actuel": (int),
+   "timestamp" : (int),
    "ville": (string),
    "date": (string)
 }
@@ -53,11 +54,14 @@ socket.on('now', function(data) {
    "ville": (string),
    "date": (date format),
    "datas": [{
-      "indice": (string)
+      "indice": (int),
+      "timestamp" : (int)
    }, {
-      "indice": (string)
+      "indice": (int),
+      "timestamp" : (int)
    }, ...{
-      "indice": (string)
+      "indice": (int),
+      "timestamp" : (int)
    }]
 }
 `````
@@ -71,11 +75,14 @@ socket.on('now', function(data) {
    "indice_ouverture": (int),
    "indice_fermeture": (int),
    "datas": [{
-      "indice": (string)
+      "indice": (int),
+      "timestamp" : (int)
    }, {
-      "indice": (string)
+      "indice": (int),
+      "timestamp" : (int)
    }, ...{
-      "indice": (string)
+      "indice": (int),
+      "timestamp" : (int)
    }]
 }
 `````
@@ -86,11 +93,14 @@ socket.on('now', function(data) {
 {
    "ville": (string),
    "datas": [{
-      "indice": (string)
+      "indice": (int),
+      "timestamp" : (int)
    }, {
-      "indice": (string)
+      "indice": (int),
+      "timestamp" : (int)
    }, ...{
-      "indice": (string)
+      "indice": (int),
+      "timestamp" : (int)
    }]
 }
 `````
@@ -101,14 +111,17 @@ socket.on('now', function(data) {
 {
    "ville": (string),
    "datas": [{
-      "indice_ouverture": (string),
-      "indice_fermeture": (string)
+      "indice_ouverture": (int),
+      "indice_fermeture": (int),
+      "timestamp" : (int)
    }, {
-      "indice_ouverture": (string),
-      "indice_fermeture": (string)
+      "indice_ouverture": (int),
+      "indice_fermeture": (int),
+      "timestamp" : (int)
    }, ...{
-      "indice_ouverture": (string),
-      "indice_fermeture": (string)
+      "indice_ouverture": (int),
+      "indice_fermeture": (int),
+      "timestamp" : (int)
    }]
 }
 `````

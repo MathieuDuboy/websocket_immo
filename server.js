@@ -34,6 +34,8 @@ io.use(function(socket, next) {
       }, 1000);
    } else if (socket.handshake.query.route == 'day') {
       socket.emit('day', functions.generate_datas_day(socket.handshake.query.date, socket.handshake.query.ville));
+   } else if (socket.handshake.query.route == 'last24') {
+      socket.emit('last24', functions.generate_last24(socket.handshake.query.date, socket.handshake.query.ville));
    } else if (socket.handshake.query.route == 'year') {
       socket.emit('year', functions.generate_datas_year(socket.handshake.query.ville));
    }
